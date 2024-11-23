@@ -1,12 +1,14 @@
 from pydantic import BaseModel
 from typing import List, Optional
 
+
 class MenuItem(BaseModel):
     id: int
     name: str
     price: float
     category: str
     image: str = None
+    sideDishes: Optional[List[dict]] = None
 
 class Category(BaseModel):
     name: str

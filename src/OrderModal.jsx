@@ -88,20 +88,31 @@ const OrderModal = ({ item, isOpen, onClose, onAddToCart }) => {
                         </div>
                     </div>
                     <div>
-                        <h3 style={styles.sideTitle}>
-                            Side dishes (
-                            <span style={{ color: "red", fontWeight: "bold" }}>
-                                *
-                            </span>
-                            )
-                        </h3>
-                        <SideDishes
-                            selectedSides={selectedSides}
-                            toggleSideDish={toggleSideDish}
-                        />
-                        <p style={styles.sideNote}>
-                            Select best quantity of side dishes for better taste
-                        </p>
+                        {item.sideDishes && (
+                            <>
+                                <h3 style={styles.sideTitle}>
+                                    Side dishes (
+                                    <span
+                                        style={{
+                                            color: "red",
+                                            fontWeight: "bold",
+                                        }}
+                                    >
+                                        *
+                                    </span>
+                                    )
+                                </h3>
+                                <SideDishes
+                                    selectedSides={selectedSides}
+                                    toggleSideDish={toggleSideDish}
+                                    sideDishes={item.sideDishes}
+                                />
+                                <p style={styles.sideNote}>
+                                    Select best quantity of side dishes for
+                                    better taste
+                                </p>
+                            </>
+                        )}
                     </div>
                     <button
                         onClick={handleAddToCart}

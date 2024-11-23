@@ -2,7 +2,7 @@ from models import MenuItem
 
 menu_items = [
     # CupCake
-    MenuItem(id=1, name="Cake_Ice Cream", price=5.99, category="CupCake", image="/images/CupCake/cake.png"),
+    MenuItem(id=1, name="Cake_Ice Cream", price=5.99, category="CupCake", image="/images/CupCake/cake.png", sideDishes=[{"id": 1, "name": "Vanilla", "price": 0.0}, {"id": 2, "name": "Chocolate", "price": 3.99}]),
     MenuItem(id=2, name="Cake_Cream", price=6.99, category="CupCake", image="/images/CupCake/cake1.png"),
     MenuItem(id=3, name="Cake_Cream", price=7.99, category="CupCake", image="/images/CupCake/cake2.png"),
     MenuItem(id=4, name="Cake_Cream", price=8.99, category="CupCake", image="/images/CupCake/cake3.png"),

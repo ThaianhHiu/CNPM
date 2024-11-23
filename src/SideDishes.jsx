@@ -1,59 +1,36 @@
-const SideDisheItem = ({ item, selectedSides, toggleSideDish }) => {
+const SideDisheItem = ({ side, selectedSides, toggleSideDish }) => {
     return (
         <label style={styles.checkboxLabel}>
             <input
                 type="checkbox"
                 checked={
-                    selectedSides.find((s) => s.id === item.id) !== undefined
+                    selectedSides.find((s) => s.id === side.id) !== undefined
                 }
-                onChange={() => toggleSideDish(item)}
+                onChange={() => toggleSideDish(side)}
                 style={styles.checkbox}
             />
             <div style={{ display: "flex" }}>
-                <span> {item.name}</span>
-                <span>kr {item.price}</span>
+                <span style={{ marginRight: "10px" }}> {side.name} </span>
+                <span style={{ color: "red", fontWeight: "bold" }}>
+                    {"kr " + side.price}
+                </span>
             </div>
         </label>
     );
 };
-export const SideDishes = ({ selectedSides, toggleSideDish }) => {
-    const sideDishes = [
-        {
-            id: 1,
-            name: "Mashed Potatoes",
-            price: 3.99,
-        },
-        {
-            id: 2,
-            name: "French Fries",
-            price: 2.99,
-        },
-        {
-            id: 3,
-            name: "Onion Rings",
-            price: 3.49,
-        },
-        {
-            id: 4,
-            name: "Coleslaw",
-            price: 2.49,
-        },
-        {
-            id: 5,
-            name: "Garlic Bread",
-            price: 1.99,
-        },
-    ];
+
+export const SideDishes = ({ selectedSides, toggleSideDish, sideDishes }) => {
     return (
         <>
-            {sideDishes.map((sideDish) => (
-                <SideDisheItem
-                    key={sideDish.id}
-                    item={sideDish}
-                    selectedSides={selectedSides}
-                    toggleSideDish={toggleSideDish}
-                />
-            ))}
+            {sideDishes &&
+                sideDishes.map((sideDish) => (
+                    <SideDisheItem
+                        key={sideDish.id}
+                        side={sideDish}
+                        selectedSides={selectedSides}
+                        toggleSideDish={toggleSideDish}
+                    />
+                ))}
         </>
     );
 };

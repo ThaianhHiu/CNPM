@@ -28,6 +28,7 @@ export default function FoodOrderingComponent() {
             ]);
             setMenuItems(menuResponse.data);
             setCategories(categoriesResponse.data);
+            console.log(menuResponse.data);
             if (categoriesResponse.data.length > 0) {
                 setSelectedCategory(categoriesResponse.data[0].name);
             }
