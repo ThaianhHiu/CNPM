@@ -104,7 +104,7 @@ const OrderModal = ({ item, isOpen, onClose, onAddToCart }) => {
                         </div>
                     </div>
                     <div>
-                        {sideDishes && (
+                        {sideDishes.length > 0 && (
                             <>
                                 <h3 style={styles.sideTitle}>
                                     Side dishes (
