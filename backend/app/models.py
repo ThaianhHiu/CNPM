@@ -1,6 +1,11 @@
 from pydantic import BaseModel
 from typing import List, Optional
 
+class SideDish(BaseModel):
+    id: int
+    menuid:int 
+    name: str
+    price: float
 
 class MenuItem(BaseModel):
     id: int
@@ -8,7 +13,6 @@ class MenuItem(BaseModel):
     price: float
     category: str
     image: str = None
-    sideDishes: Optional[List[dict]] = None
 
 class Category(BaseModel):
     name: str

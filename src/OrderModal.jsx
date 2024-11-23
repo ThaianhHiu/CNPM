@@ -1,14 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { SideDishes } from "./SideDishes";
+import { api } from "./services/api";
 
 const OrderModal = ({ item, isOpen, onClose, onAddToCart }) => {
-    if (!isOpen) return null;
-
     const [quantity, setQuantity] = useState(1);
     const [selectedSides, setSelectedSides] = useState([]);
+    const [sideDishes, setSideDishes] = useState([]);
+
+    useEffect(() => {
+        try {
+            const fetchSideDishes = async () => {
+                const response = await api.getSideDishes(item.id);
+                setSideDishes(
+                    response.data.filter((s) => s.menuid === item?.id)
+                );
+            };
+            fetchSideDishes();
+        } catch (e) {
+            console.error("Error fetching side dishes:", e);
+        }
+    }, [item]);
+
+    if (!isOpen) return null;
 
     const updateQuantity = (delta) => {
         setQuantity(Math.max(1, quantity + delta));
@@ -88,7 +104,7 @@ const OrderModal = ({ item, isOpen, onClose, onAddToCart }) => {
                         </div>
                     </div>
                     <div>
-                        {item.sideDishes && (
+                        {sideDishes && (
                             <>
                                 <h3 style={styles.sideTitle}>
                                     Side dishes (
@@ -105,7 +121,7 @@ const OrderModal = ({ item, isOpen, onClose, onAddToCart }) => {
                                 <SideDishes
                                     selectedSides={selectedSides}
                                     toggleSideDish={toggleSideDish}
-                                    sideDishes={item.sideDishes}
+                                    sideDishes={sideDishes}
                                 />
                                 <p style={styles.sideNote}>
                                     Select best quantity of side dishes for

@@ -1,4 +1,4 @@
-import { FiShoppingCart } from "react-icons/fi"; 
+import { FiShoppingCart } from "react-icons/fi";
 
 export const MenuItem = ({ item, onAddToCart }) => (
     <div style={styles.menuItem}>

@@ -12,7 +12,7 @@ export default function FoodOrderingComponent() {
     const [menuItems, setMenuItems] = useState([]);
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("");
-    const [itemModal, setItemModal] = useState(null);
+    const [itemModal, setItemModal] = useState({});
     const [isOpenModal, setIsOpenModal] = useState(false);
 
     useEffect(() => {
@@ -28,7 +28,6 @@ export default function FoodOrderingComponent() {
             ]);
             setMenuItems(menuResponse.data);
             setCategories(categoriesResponse.data);
-            console.log(menuResponse.data);
             if (categoriesResponse.data.length > 0) {
                 setSelectedCategory(categoriesResponse.data[0].name);
             }
@@ -61,7 +60,7 @@ export default function FoodOrderingComponent() {
                     i.id === item.id &&
                     JSON.stringify(i.options) == JSON.stringify(sideDishes)
             )
-                ? updateQuantity(cartItem, 1)
+                ? updateQuantity(cartItem, quantity)
                 : await api.addToCart(cartItem);
             await fetchCart();
         } catch (error) {
@@ -98,15 +97,17 @@ export default function FoodOrderingComponent() {
     return (
         <div style={mainStyles.main}>
             <div style={mainStyles.menuSection}>
-                <OrderModal
-                    item={itemModal}
-                    isOpen={isOpenModal}
-                    onClose={() => {
-                        setIsOpenModal(false);
-                        setItemModal(null);
-                    }}
-                    onAddToCart={addToCart}
-                />
+                {itemModal && (
+                    <OrderModal
+                        item={itemModal}
+                        isOpen={isOpenModal}
+                        onClose={() => {
+                            setIsOpenModal(false);
+                            setItemModal(null);
+                        }}
+                        onAddToCart={addToCart}
+                    />
+                )}
                 <Header />
                 <CategoryList
                     categories={categories}
