@@ -5,8 +5,13 @@ import { api } from "./services/api";
 
 export const Cart = ({ cartItems, onUpdateQuantity, total, onPlaceOrder }) => {
     const [orderSuccess, setOrderSuccess] = useState(false);
+    const [orderError, setOrderError] = useState(false);
 
     const handlePlaceOrder = async () => {
+        if (cartItems.length === 0) {
+            setOrderError(true);
+            return;
+        }
         try {
             const order = {
                 id: 0,
@@ -17,6 +22,7 @@ export const Cart = ({ cartItems, onUpdateQuantity, total, onPlaceOrder }) => {
             await api.clearCart();
             onPlaceOrder();
             setOrderSuccess(true);
+            setOrderError(false);
             console.log("Order placed successfully");
         } catch (error) {
             console.error("Error placing order:", error);
@@ -63,6 +69,11 @@ export const Cart = ({ cartItems, onUpdateQuantity, total, onPlaceOrder }) => {
                 {orderSuccess && (
                     <div style={styles.successMessage}>
                         Payment successful!
+                    </div>
+                )}
+                {orderError && (
+                    <div style={styles.errorMessage}>
+                        Your cart is empty. Please add items to your cart before placing an order.
                     </div>
                 )}
             </div>
@@ -146,6 +157,11 @@ const styles = {
     },
     successMessage: {
         color: "green",
+        textAlign: "center",
+        marginBottom: "16px",
+    },
+    errorMessage: {
+        color: "red",
         textAlign: "center",
         marginBottom: "16px",
     },

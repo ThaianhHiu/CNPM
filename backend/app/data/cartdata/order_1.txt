@@ -2,27 +2,6 @@
     "id": 1,
     "items": [
         {
-            "id": 1,
-            "name": "Cake_Ice Cream",
-            "price": 5.99,
-            "image": "/images/CupCake/cake.png",
-            "quantity": 1,
-            "options": [
-                {
-                    "id": 1,
-                    "menuid": 1,
-                    "name": "Vani",
-                    "price": 2.99
-                },
-                {
-                    "id": 2,
-                    "menuid": 1,
-                    "name": "Chocolate",
-                    "price": 3.49
-                }
-            ]
-        },
-        {
             "id": 2,
             "name": "Cake_Cream",
             "price": 6.99,
@@ -37,15 +16,7 @@
             "image": "/images/CupCake/cake2.png",
             "quantity": 1,
             "options": []
-        },
-        {
-            "id": 4,
-            "name": "Cake_Cream",
-            "price": 8.99,
-            "image": "/images/CupCake/cake3.png",
-            "quantity": 1,
-            "options": []
         }
     ],
-    "total": 36.440000000000005
+    "total": 14.98
 }

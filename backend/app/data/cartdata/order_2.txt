@@ -2,30 +2,6 @@
     "id": 2,
     "items": [
         {
-            "id": 3,
-            "name": "Cake_Cream",
-            "price": 7.99,
-            "image": "/images/CupCake/cake2.png",
-            "quantity": 1,
-            "options": []
-        },
-        {
-            "id": 8,
-            "name": "Sea Food",
-            "price": 12.99,
-            "image": "/images/SeaFood/seafood.png",
-            "quantity": 3,
-            "options": []
-        },
-        {
-            "id": 11,
-            "name": "Sea Food",
-            "price": 15.99,
-            "image": "/images/SeaFood/seafood3.png",
-            "quantity": 5,
-            "options": []
-        },
-        {
             "id": 1,
             "name": "Cake_Ice Cream",
             "price": 5.99,
@@ -43,9 +19,31 @@
                     "menuid": 1,
                     "name": "Chocolate",
                     "price": 3.49
+                },
+                {
+                    "id": 3,
+                    "menuid": 1,
+                    "name": "Strawberry",
+                    "price": 3.49
                 }
             ]
+        },
+        {
+            "id": 2,
+            "name": "Cake_Cream",
+            "price": 6.99,
+            "image": "/images/CupCake/cake1.png",
+            "quantity": 1,
+            "options": []
+        },
+        {
+            "id": 3,
+            "name": "Cake_Cream",
+            "price": 7.99,
+            "image": "/images/CupCake/cake2.png",
+            "quantity": 1,
+            "options": []
         }
     ],
-    "total": 139.38
+    "total": 30.940000000000005
 }
