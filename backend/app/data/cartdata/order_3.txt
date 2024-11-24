@@ -1,0 +1,51 @@
+{
+    "id": 3,
+    "items": [
+        {
+            "id": 2,
+            "name": "Cake_Cream",
+            "price": 6.99,
+            "image": "/images/CupCake/cake1.png",
+            "quantity": 1,
+            "options": []
+        },
+        {
+            "id": 3,
+            "name": "Cake_Cream",
+            "price": 7.99,
+            "image": "/images/CupCake/cake2.png",
+            "quantity": 1,
+            "options": []
+        },
+        {
+            "id": 8,
+            "name": "Sea Food",
+            "price": 12.99,
+            "image": "/images/SeaFood/seafood.png",
+            "quantity": 1,
+            "options": []
+        },
+        {
+            "id": 1,
+            "name": "Cake_Ice Cream",
+            "price": 5.99,
+            "image": "/images/CupCake/cake.png",
+            "quantity": 1,
+            "options": [
+                {
+                    "id": 2,
+                    "menuid": 1,
+                    "name": "Chocolate",
+                    "price": 3.49
+                },
+                {
+                    "id": 3,
+                    "menuid": 1,
+                    "name": "Strawberry",
+                    "price": 3.49
+                }
+            ]
+        }
+    ],
+    "total": 40.94
+}

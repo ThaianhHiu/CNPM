@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { CartItem } from "./CartItem";
 import { IoMdCart } from "react-icons/io";
 import { api } from "./services/api";
 
 export const Cart = ({ cartItems, onUpdateQuantity, total, onPlaceOrder }) => {
+    const [orderSuccess, setOrderSuccess] = useState(false);
+
     const handlePlaceOrder = async () => {
         try {
             const order = {
@@ -14,7 +16,7 @@ export const Cart = ({ cartItems, onUpdateQuantity, total, onPlaceOrder }) => {
             await api.placeOrder(order);
             await api.clearCart();
             onPlaceOrder();
-            // You might want to add some state to show a success message
+            setOrderSuccess(true);
             console.log("Order placed successfully");
         } catch (error) {
             console.error("Error placing order:", error);
@@ -58,6 +60,11 @@ export const Cart = ({ cartItems, onUpdateQuantity, total, onPlaceOrder }) => {
                 <button style={styles.paymentButton} onClick={handlePlaceOrder}>
                     PAYMENT
                 </button>
+                {orderSuccess && (
+                    <div style={styles.successMessage}>
+                        Payment successful!
+                    </div>
+                )}
             </div>
         </div>
     );
@@ -136,5 +143,10 @@ const styles = {
         cursor: "pointer",
         fontSize: "16px",
         fontWeight: "500",
+    },
+    successMessage: {
+        color: "green",
+        textAlign: "center",
+        marginBottom: "16px",
     },
 };
