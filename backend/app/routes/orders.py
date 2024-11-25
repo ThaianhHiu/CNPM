@@ -15,10 +15,10 @@ async def get_orders():
 @router.post("/api/orders", response_model=Order)
 async def place_order(order: Order):
     global cart
-    order.id = str(dt.datetime.now().strftime("%Y_%m_%d_%H%M%S"))
+    order.id = int(dt.datetime.now().strftime("%Y%m%d%H%M%S"))
     orders.append(order)
-    os.makedirs("data/cartdata", exist_ok=True)
-    with open(f"data/cartdata/order_{order.id}.txt", "w") as f:
+    os.makedirs("backend/app/data/cartdata", exist_ok=True)
+    with open(f"backend/app/data/cartdata/order_{order.id}.txt", "w") as f:
         json.dump(order.dict(), f, indent=4)
     cart = []  # Clear the cart after placing an order
     return order

@@ -11,7 +11,6 @@ node_modules
 dist
 dist-ssr
 *.local
-backend/app/data/cartdata/*
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
