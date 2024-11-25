@@ -10,6 +10,7 @@ export const Cart = ({ cartItems, onUpdateQuantity, total, onPlaceOrder }) => {
     const handlePlaceOrder = async () => {
         if (cartItems.length === 0) {
             setOrderError(true);
+            setOrderSuccess(false);
             return;
         }
         try {
@@ -66,12 +67,12 @@ export const Cart = ({ cartItems, onUpdateQuantity, total, onPlaceOrder }) => {
                 <button style={styles.paymentButton} onClick={handlePlaceOrder}>
                     PAYMENT
                 </button>
-                {orderSuccess && (
+                {orderSuccess && cartItems.length === 0 && (
                     <div style={styles.successMessage}>
                         Payment successful!
                     </div>
                 )}
-                {orderError && (
+                {orderError && cartItems.length === 0 && (
                     <div style={styles.errorMessage}>
                         Your cart is empty. Please add items to your cart before placing an order.
                     </div>

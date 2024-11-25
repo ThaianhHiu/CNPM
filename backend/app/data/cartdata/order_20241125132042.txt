@@ -1,0 +1,14 @@
+{
+    "id": "20241125132042",
+    "items": [
+        {
+            "id": 5,
+            "name": "Cake_Cream",
+            "price": 9.99,
+            "image": "/images/CupCake/cake4.png",
+            "quantity": 1,
+            "options": []
+        }
+    ],
+    "total": 9.99
+}
