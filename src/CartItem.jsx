@@ -1,57 +1,60 @@
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
-export const CartItem = ({ item, onUpdateQuantity }) => (
-    <div style={styles.cartItem}>
-        <div style={styles.cartItemMain}>
-            <img
-                src={item.image}
-                alt={item.name}
-                style={styles.cartItemImage}
-            />
-            <div style={styles.cartItemDetails}>
-                <div style={styles.cartItemHeader}>
-                    <h3 style={styles.cartItemName}>{item.name}</h3>
-                    <p style={styles.cartItemPrice}>
-                         {item.price.toFixed(2)} VND
-                    </p>
-                </div>
-                <div style={styles.quantityControl}>
-                    <button
-                        onClick={() => onUpdateQuantity(item, -1)}
-                        style={{
-                            ...styles.quantityButton,
-                            borderColor: "black",
-                        }}
-                        aria-label={`Decrease quantity of ${item.name}`}
-                    >
-                        <FaMinus />
-                    </button>
-                    <span style={styles.quantityDisplay}>{item.quantity}</span>
-                    <button
-                        onClick={() => onUpdateQuantity(item, 1)}
-                        style={{
-                            ...styles.quantityButton,
-                            color: "red",
-                        }}
-                        aria-label={`Increase quantity of ${item.name}`}
-                    >
-                        <FaPlus />
-                    </button>
-                </div>
-            </div>
-        </div>
-        {item.options && (
-            <div style={styles.cartItemOptions}>
-                {item.options.map((option) => (
-                    <div key={option.name} style={styles.cartItemOption}>
-                        <span>{option.name}</span>
-                        <span> {option.price.toFixed(2)} VND </span>
+export const CartItem = ({ item, onUpdateQuantity }) => {
+    const totalPrice = (item.price + (item.options ? item.options.reduce((sum, option) => sum + option.price, 0) : 0)) * item.quantity;
+    return (
+        <div style={styles.cartItem}>
+            <div style={styles.cartItemMain}>
+                <img
+                    src={item.image}
+                    alt={item.name}
+                    style={styles.cartItemImage}
+                />
+                <div style={styles.cartItemDetails}>
+                    <div style={styles.cartItemHeader}>
+                        <h3 style={styles.cartItemName}>{item.name}</h3>
+                        <p style={styles.cartItemPrice}>
+                            {totalPrice.toFixed(2)} VND
+                        </p>
                     </div>
-                ))}
+                    <div style={styles.quantityControl}>
+                        <button
+                            onClick={() => onUpdateQuantity(item, -1)}
+                            style={{
+                                ...styles.quantityButton,
+                                borderColor: "black",
+                            }}
+                            aria-label={`Decrease quantity of ${item.name}`}
+                        >
+                            <FaMinus />
+                        </button>
+                        <span style={styles.quantityDisplay}>{item.quantity}</span>
+                        <button
+                            onClick={() => onUpdateQuantity(item, 1)}
+                            style={{
+                                ...styles.quantityButton,
+                                color: "red",
+                            }}
+                            aria-label={`Increase quantity of ${item.name}`}
+                        >
+                            <FaPlus />
+                        </button>
+                    </div>
+                </div>
             </div>
-        )}
-    </div>
-);
+            {item.options && (
+                <div style={styles.cartItemOptions}>
+                    {item.options.map((option) => (
+                        <div key={option.name} style={styles.cartItemOption}>
+                            <span>{option.name}</span>
+                            <span> {option.price.toFixed(2)} VND </span>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};
 
 const styles = {
     cartItem: {
