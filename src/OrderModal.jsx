@@ -76,7 +76,7 @@ const OrderModal = ({ item, isOpen, onClose, onAddToCart }) => {
                                     Unit Price
                                 </span>
                                 <span style={styles.price}>
-                                    kr {item.price.toFixed(2)}
+                                    {item.price.toFixed(2)} VND
                                 </span>
                             </div>
                         </div>
@@ -135,7 +135,6 @@ const OrderModal = ({ item, isOpen, onClose, onAddToCart }) => {
                         style={styles.addToCartButton}
                     >
                         <FiShoppingCart style={styles.cartIcon} />
-                        Kr{" "}
                         {(
                             (item.price +
                                 selectedSides.reduce(
@@ -144,6 +143,7 @@ const OrderModal = ({ item, isOpen, onClose, onAddToCart }) => {
                                 )) *
                             quantity
                         ).toFixed(2)}
+                         {" "} VND
                     </button>
                 </div>
             </div>

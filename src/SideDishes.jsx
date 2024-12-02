@@ -12,7 +12,7 @@ const SideDisheItem = ({ side, selectedSides, toggleSideDish }) => {
             <div style={{ display: "flex" }}>
                 <span style={{ marginRight: "10px" }}> {side.name} </span>
                 <span style={{ color: "red", fontWeight: "bold" }}>
-                    {"kr " + side.price}
+                    { side.price + " VND" }
                 </span>
             </div>
         </label>

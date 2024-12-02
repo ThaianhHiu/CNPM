@@ -57,10 +57,10 @@ export const Cart = ({ cartItems, onUpdateQuantity, total, onPlaceOrder }) => {
                     <span style={styles.cartTotalLabel}>Total:</span>
                     <div style={styles.cartTotalAmount}>
                         <p style={styles.cartTotalPrice}>
-                            Kr {total.toFixed(2)}
+                             {total.toFixed(2)} VND
                         </p>
                         <p style={styles.cartTotalTax}>
-                            (Incl. tax 10% = Kr {(total * 0.1).toFixed(2)})
+                            (Incl. tax 10% = {(total * 0.1).toFixed(2)} VND)
                         </p>
                     </div>
                 </div>

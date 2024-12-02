@@ -12,7 +12,7 @@ export const CartItem = ({ item, onUpdateQuantity }) => (
                 <div style={styles.cartItemHeader}>
                     <h3 style={styles.cartItemName}>{item.name}</h3>
                     <p style={styles.cartItemPrice}>
-                        Kr {item.price.toFixed(2)}
+                         {item.price.toFixed(2)} VND
                     </p>
                 </div>
                 <div style={styles.quantityControl}>
@@ -45,7 +45,7 @@ export const CartItem = ({ item, onUpdateQuantity }) => (
                 {item.options.map((option) => (
                     <div key={option.name} style={styles.cartItemOption}>
                         <span>{option.name}</span>
-                        <span>kr {option.price.toFixed(2)}</span>
+                        <span> {option.price.toFixed(2)} VND </span>
                     </div>
                 ))}
             </div>

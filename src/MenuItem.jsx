@@ -11,7 +11,7 @@ export const MenuItem = ({ item, onAddToCart }) => (
                     </span>{" "}
                     {item.name}
                 </h3>
-                <p style={styles.menuItemPrice}>Kr {item.price.toFixed(2)}</p>
+                <p style={styles.menuItemPrice}>{item.price.toFixed(2)} VND</p>
             </div>
             <button
                 onClick={() => onAddToCart(item)}
