@@ -19,6 +19,6 @@ async def place_order(order: Order):
     orders.append(order)
     os.makedirs("backend/app/data/cartdata", exist_ok=True)
     with open(f"backend/app/data/cartdata/order_{order.id}.txt", "w") as f:
-        json.dump(order.dict(), f, indent=4)
+        json.dump(order.model_dump(), f, indent=4)
     cart = []  # Clear the cart after placing an order
     return order
