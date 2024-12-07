@@ -41,7 +41,10 @@ export const Cart = ({ cartItems, onUpdateQuantity, total, onPlaceOrder }) => {
                         Your Cart ({cartItems.length})
                     </span>
                 </div>
-                <button style={styles.secondaryButton}>DINE IN</button>
+                <select style={styles.secondaryButton}>
+                    <option value="dine-in">DINE IN</option>
+                    <option value="take-away">TAKE AWAY</option>
+                </select>
             </div>
             <div style={styles.cartItems}>
                 {cartItems.map((item) => (
@@ -57,7 +60,7 @@ export const Cart = ({ cartItems, onUpdateQuantity, total, onPlaceOrder }) => {
                     <span style={styles.cartTotalLabel}>Total:</span>
                     <div style={styles.cartTotalAmount}>
                         <p style={styles.cartTotalPrice}>
-                             {total.toFixed(2)} VND
+                            {(total.toFixed(2) * 1.1).toFixed(2)} VND
                         </p>
                         <p style={styles.cartTotalTax}>
                             (Incl. tax 10% = {(total * 0.1).toFixed(2)} VND)
@@ -68,13 +71,12 @@ export const Cart = ({ cartItems, onUpdateQuantity, total, onPlaceOrder }) => {
                     PAYMENT
                 </button>
                 {orderSuccess && cartItems.length === 0 && (
-                    <div style={styles.successMessage}>
-                        Payment successful!
-                    </div>
+                    <div style={styles.successMessage}>Payment successful!</div>
                 )}
                 {orderError && cartItems.length === 0 && (
                     <div style={styles.errorMessage}>
-                        Your cart is empty. Please add items to your cart before placing an order.
+                        Your cart is empty. Please add items to your cart before
+                        placing an order.
                     </div>
                 )}
             </div>
